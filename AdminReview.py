@@ -105,7 +105,7 @@ def get_acdetails(id):
             #st.write(res)
 
 def get_studentinfo(cid):
-    stsql = """select student_name, sh_club_name from student_info where \
+    stsql = """select student_name, sh_club_name from Student_info where \
             college_id = %s"""
     val = (cid,)
     mycursor.execute(stsql, val)
