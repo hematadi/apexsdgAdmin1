@@ -147,8 +147,6 @@ def show_data():
         aclist_obj['activity_id'] = acname["activity_name"]
         col1, col2 = st.columns([1,4])
         amarks = aclist_obj['allocated_marks']
-        if amarks is None:
-            amarks = 0
         acname_list.append(acname["activity_name"])
         aclist_objset.append(aclist_obj)
         #if amarks == 0:
@@ -187,8 +185,7 @@ def main():
             st.table(result)
         #Get activity details from id
             get_acdetails(cid)
-    #Commenting this as seeing an error on streamlit
-    #get_studentinfo(cid)
+    get_studentinfo(cid)
     get_natintlinfo(cid)
     show_data()
     submitted = st.button("Submit")
