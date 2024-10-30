@@ -147,7 +147,7 @@ def show_data():
         aclist_obj['activity_id'] = acname["activity_name"]
         col1, col2 = st.columns([1,4])
         amarks = aclist_obj['allocated_marks']
-if amarks is None:
+        if amarks is None:
             amarks = 0
         acname_list.append(acname["activity_name"])
         aclist_objset.append(aclist_obj)
