@@ -87,6 +87,8 @@ def allocate_marks(amarks,id_acd, cid):
         #marks_tuple = (id_acd, mrks)
         #marks.append(marks_tuple)
     mrks = int(u_mrks)
+    if amarks is None : 
+	    amarks=0
     if mrks is not None and mrks > 0 :     
         erow = (id_acd, int(amarks),mrks)
         marks_t.append(erow)
