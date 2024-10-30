@@ -10,10 +10,10 @@ import pandas as pd
 #from sqlalchemy.ext.declarative import declarative_base
 
 db_config = {
-    'host': 'srv1118.hstgr.io',
-    'user': 'u829120591_bV3z1',
-    'password': 'u829120591_bV3z1U',
-    'database': 'u829120591_4XuUf',
+    'host': '127.0.0.1',
+    'user': 'test1',
+    'password': 'test1',
+    'database': 'apexsdg',
 }
 
 conn = mysql.connector.connect(**db_config)
@@ -87,8 +87,6 @@ def allocate_marks(amarks,id_acd, cid):
         #marks_tuple = (id_acd, mrks)
         #marks.append(marks_tuple)
     mrks = int(u_mrks)
-    if amarks is None : 
-	    amarks=0
     if mrks is not None and mrks > 0 :     
         erow = (id_acd, int(amarks),mrks)
         marks_t.append(erow)
@@ -107,7 +105,7 @@ def get_acdetails(id):
             #st.write(res)
 
 def get_studentinfo(cid):
-    stsql = """select student_name, sh_club_name from Student_info where \
+    stsql = """select student_name, sh_club_name from student_info where \
             college_id = %s"""
     val = (cid,)
     mycursor.execute(stsql, val)
@@ -201,6 +199,8 @@ def main():
         ctmrkst1 = mycursor.fetchone()
         if ctmrkst1 is not None:
             ctmrkst = ctmrkst1["total_marks"]
+            if ctmrkst is None:
+                ctmrkst = 0
             tmrks = int(ctmrkst)+total_new_marks
             #st.write(f"Total marks in main = {tmrks}")
             totmarkssql = """update college_info set total_marks = %s where id = %s"""
